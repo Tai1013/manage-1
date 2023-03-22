@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/Tai1013/manage/compare/v0.1.1...v0.1.2) (2023-03-22)
+
+
+### Bug Fixes
+
+* delete reload ([517466a](https://github.com/Tai1013/manage/commit/517466ada2a5001e7288f9cf1e87ef3be51dd993))
+
 ### 0.1.1 (2023-03-22)
 
 
