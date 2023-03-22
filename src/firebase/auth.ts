@@ -51,7 +51,6 @@ export const postSignInAnonymously = async () => {
         apiAction: 'login'
       })
       $message.success($t('登入成功'))
-      document.location.reload()
       router.push({ name: 'home' })
     })
     .catch((error) => {
@@ -71,7 +70,6 @@ export const postSignInAuth = async (body: {
         apiAction: 'login'
       })
       $message.success($t('登入成功'))
-      document.location.reload()
       router.push({ name: 'home' })
     })
     .catch((error) => {

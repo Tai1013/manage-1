@@ -17,3 +17,7 @@ husky-init:
 release:
 	pnpm run release
 	git push --follow-tags origin main
+
+release-build:
+	make release
+	make build
