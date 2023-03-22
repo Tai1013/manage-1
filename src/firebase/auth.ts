@@ -4,10 +4,10 @@ import { app } from '@/firebase'
 import { getAuth, signInWithEmailAndPassword, signInAnonymously, onAuthStateChanged, signOut } from "firebase/auth";
 import { errorMessageFormatter } from './formatter'
 import { useMessage } from '@/composables'
-// import { operateApi } from './operation'
+import { operateApi } from './operation'
 import { $t } from '@/i18n'
 import dayjs from 'dayjs'
-// import router from '@/router';
+import router from '@/router';
 
 const auth = getAuth(app)
 const { $message } = useMessage()
@@ -46,13 +46,13 @@ export const getAuthState = async () => {
 export const postSignInAnonymously = async () => {
   await signInAnonymously(auth)
     .then(async (userCredential) => {
-      // await operateApi({
-      //   account: 'Anonymous',
-      //   apiAction: 'login'
-      // })
+      await operateApi({
+        account: 'Anonymous',
+        apiAction: 'login'
+      })
       $message.success($t('登入成功'))
       document.location.reload()
-      // router.push({ name: 'home' })
+      router.push({ name: 'home' })
     })
     .catch((error) => {
       $message.error(errorMessageFormatter(error.code))
@@ -66,13 +66,13 @@ export const postSignInAuth = async (body: {
 }) => {
   await signInWithEmailAndPassword(auth, body.email, body.password)
     .then(async (userCredential) => {
-      // await operateApi({
-      //   account: userCredential.user.displayName ?? '',
-      //   apiAction: 'login'
-      // })
+      await operateApi({
+        account: userCredential.user.displayName ?? '',
+        apiAction: 'login'
+      })
       $message.success($t('登入成功'))
       document.location.reload()
-      // router.push({ name: 'home' })
+      router.push({ name: 'home' })
     })
     .catch((error) => {
       $message.error(errorMessageFormatter(error.code))
@@ -83,7 +83,7 @@ export const signOutAuth = () => {
   signOut(auth)
     .then(() => {
       localStorage.removeItem('session')
-      // router.push({ name: 'login' })
+      router.push({ name: 'login' })
     })
     .catch((error) => {
       $message.error(errorMessageFormatter(error.code))

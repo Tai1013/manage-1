@@ -12,7 +12,7 @@ const messages = Object.fromEntries(
 
 export const i18n = createI18n({
   legacy: false,
-  locale: import.meta.env.VITE_DEFAULT_LANGUAGE,
+  locale: import.meta.env.VITE_APP_LANGUAGE,
   fallbackLocale: 'zh-tw',
   globalInjection: true,
   messages

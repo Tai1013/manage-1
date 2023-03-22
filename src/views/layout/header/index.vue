@@ -1,13 +1,13 @@
 <template lang="pug">
 .header-top
   .between
-    //- language-drop-comp
+    language-drop-comp
   .between
-    //- date-drop-comp
+    date-drop-comp
 .header-content
   .between
   .between
-    //- user-drop-comp
+    user-drop-comp
 </template>
 
 <script setup lang="ts">

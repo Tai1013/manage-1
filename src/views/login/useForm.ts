@@ -7,8 +7,8 @@ import { $t } from '@/i18n'
 
 export const useForm = () => {
     const { load, unload, isLoading } = useLoading()
-    const { route, router } = useVueRouter()
-    const { $message, $messageBox } = useMessage()
+    const { route } = useVueRouter()
+    const { $messageBox } = useMessage()
 
     const rememberAccount = localStorage.getItem(route.origin) ?? ''
 
@@ -51,8 +51,7 @@ export const useForm = () => {
       if (isFormal.value) {
         if (form.remember) localStorage.setItem(route.origin, form.email)
         else localStorage.removeItem(route.origin)
-        // await postSignInAuth(form)
-        router.push({ name: 'home' })
+        await postSignInAuth(form)
       } else {
         const confirm = await $messageBox.confirm($t('演示站僅供查看'), $t('提示'), {
           type: 'warning',
@@ -62,8 +61,7 @@ export const useForm = () => {
           .then(() => true)
           .catch(() => false)
 
-        if (confirm) router.push({ name: 'home' })
-        // await postSignInAnonymously()
+        if (confirm) await postSignInAnonymously()
       }
       unload()
     }

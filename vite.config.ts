@@ -7,7 +7,8 @@ import dotenv from 'dotenv'
 const INVALID_CHAR_REGEX = /[\x00-\x1F\x7F<>*#"{}|^[\]`;?:&=+$,]/g;
 const DRIVE_LETTER_REGEX = /^[a-z]:/i;
 
-dotenv.config({ path: `./.env.${process.env.NODE_ENV}` })
+process.env.VITE_APP_VERSION = process.env.npm_package_version
+dotenv.config()
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,7 +24,7 @@ export default defineConfig({
     },
     vue()
   ],
-  base: process.env.VITE_APP_FIREBASE_BASE,
+  base: process.env.VITE_APP_BASE,
   build: {
     outDir: 'docs',
     assetsDir: 'assets',

@@ -18,8 +18,8 @@ export const useLanguage = () => {
   const currentFlags = computed(() => new URL(`./flags/${language.value}.png`, import.meta.url).href)
 
   const elementLocale = ref<Language | undefined>(undefined)
-  const language = ref<string>(localStorage.getItem('language') ?? import.meta.env.VITE_DEFAULT_LANGUAGE)
-  i18n.global.locale.value = localStorage.getItem('language') ?? import.meta.env.VITE_DEFAULT_LANGUAGE
+  const language = ref<string>(localStorage.getItem('language') ?? import.meta.env.VITE_APP_LANGUAGE)
+  i18n.global.locale.value = localStorage.getItem('language') ?? import.meta.env.VITE_APP_LANGUAGE
   const changeLocale = (locale: string) => {
     language.value = locale
     i18n.global.locale.value = locale
