@@ -1,7 +1,0 @@
-export type { FormField, FormFieldScope } from './form/types'
-export { default as MrcForm } from './form/index.vue'
-export { default as MrcButton } from './button/index.vue'
-export type { DropOption } from './dropdown/types'
-export { default as MrcDropdown } from './dropdown/index.vue'
-export { default as MrcIcon } from './icon/index.vue'
-export { default as MrcLink } from './link/index.vue'

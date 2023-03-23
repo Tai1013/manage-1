@@ -17,9 +17,7 @@ import UserDropComp from './user-drop.vue'
 </script>
 
 <script lang="ts">
-export default {
-  name: 'HeaderComp'
-}
+export default { name: 'HeaderComp' }
 </script>
 
 <style scoped lang="scss">

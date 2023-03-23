@@ -3,5 +3,6 @@
   "auth/user-not-found": "電子信箱或密碼有誤",
   "auth/wrong-password": "電子信箱或密碼有誤",
   "auth/user-disabled": "帳戶已停用",
-  "auth/too-many-requests": "多次登錄失敗，帳戶已暫時禁用，請稍候再試"
+  "auth/too-many-requests": "多次登錄失敗，帳戶已暫時禁用，請稍候再試",
+  "invalid-argument": "API格式錯誤"
 }

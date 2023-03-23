@@ -10,10 +10,15 @@ mrc-button(
 </template>
 
 <script setup lang="ts">
-import type { PropType, ButtonItem, ButtonList } from './types'
-import { BUTTON_LIST } from './types'
+import type { PropType } from 'vue'
+import type { ButtonItem, ButtonList } from './define'
 import { computed } from 'vue'
-import { MrcButton } from '@/components/basic'
+import { MrcButton } from '@/components'
+
+const BUTTON_LIST: ButtonList[] = [
+  { label: '送出', value: 'submit', type: 'primary' },
+  { label: '取消', value: 'cancel', type: '' }
+]
 
 const props = defineProps({
   button: {
@@ -40,7 +45,5 @@ const innerLoading = computed(() => ['submit'].includes(props.button) && props.l
 </script>
 
 <script lang="ts">
-export default {
-  name: "ButtonComp"
-}
+export default { name: "ButtonComp" }
 </script>

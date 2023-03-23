@@ -16,7 +16,7 @@ mrc-dropdown.anguage-drop(
 <script setup lang="ts">
 import { reactive } from 'vue'
 import { ElAvatar } from 'element-plus'
-import { MrcDropdown } from '@/components/basic'
+import { MrcDropdown } from '@/components'
 import { LOCALE_LIST } from '@/configs/constant'
 import { getPathFile } from '@/helper'
 import { useLanguage } from '@/i18n'
@@ -35,7 +35,5 @@ const commandHandler = (locale: string) => {
 </script>
 
 <script lang="ts">
-export default {
-  name: 'LanguageDropComp'
-}
+export default { name: 'LanguageDropComp' }
 </script>

@@ -6,8 +6,8 @@ el-icon(v-if="icon" :color="color")
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { ElementIconType } from '@/plugin/element-icon'
-import { ElIcon } from 'element-plus'
 import { elementIcon } from '@/plugin/element-icon'
+import { ElIcon } from 'element-plus'
 
 defineProps({
   icon: {
@@ -22,7 +22,5 @@ defineProps({
 </script>
 
 <script lang="ts">
-export default {
-  name: 'McrIcon'
-}
+export default { name: 'McrIcon' }
 </script>

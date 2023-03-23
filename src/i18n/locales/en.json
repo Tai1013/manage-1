@@ -37,6 +37,7 @@
     "權限超時，請重新登入": "Auth time out, please login again",
     "電子信箱或密碼有誤": "Email or Password error",
     "帳戶已停用": "User disabled",
-    "多次登錄失敗，帳戶已暫時禁用，請稍候再試": "Too many requests"  
+    "多次登錄失敗，帳戶已暫時禁用，請稍候再試": "Too many requests",
+    "API格式錯誤": "API Wrong Format"
   }
 }

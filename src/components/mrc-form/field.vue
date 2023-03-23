@@ -54,7 +54,8 @@ template(v-else-if="field.component === 'select-group'")
 </template>
 
 <script setup lang="ts">
-import type { FormField, PropType, Ref } from './types'
+import type { FormField } from './define'
+import type { PropType, Ref } from 'vue'
 import { ElInput, ElOption, ElSelect, ElOptionGroup } from 'element-plus'
 
 defineProps({
@@ -79,7 +80,5 @@ const convertRef = <T>(data: Ref<T> | T ): T => {
 </script>
 
 <script lang="ts">
-export default {
-    name: "FieldComp"
-}
+export default { name: "FieldComp" }
 </script>

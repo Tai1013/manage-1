@@ -1,9 +1,9 @@
 <template lang="pug">
-breadcrumb
+mrc-breadcrumb
 </template>
 
 <script setup lang="ts">
-import Breadcrumb from '@/components/breadcrumb/index.vue'
+import { MrcBreadcrumb } from '@/components'
 </script>
 
 <style lang="scss">

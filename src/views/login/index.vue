@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { MrcForm } from '@/components/basic'
+import { MrcForm } from '@/components'
 import { ElCheckbox, ElSwitch } from 'element-plus'
 import { useForm } from './useForm'
 
@@ -34,7 +34,7 @@ const { isFormal, form, fields, isLoading, submitHandler } = useForm()
 const version = import.meta.env.VITE_APP_VERSION
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .login {
   position: fixed;
   top: 0;
@@ -47,14 +47,14 @@ const version = import.meta.env.VITE_APP_VERSION
   color: #ffffff;
   background-image: url(./bg.svg);
   background-size: cover;
-  label {
+  :deep(label) {
     color: #ffffff;
   }
-  .el-switch__label:not(.is-active) {
+  :deep(.el-switch__label):not(.is-active) {
     color: #ffffff;
   }
 }
-.login-form {
+:deep(.login-form) {
   max-width: 280px;
   width: 90%;
   .login-title {

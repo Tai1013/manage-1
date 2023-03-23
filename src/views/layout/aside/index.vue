@@ -5,16 +5,14 @@
 </template>
 
 <script setup lang="ts">
-import { MrcLink } from '@/components/basic'
+import { MrcLink } from '@/components'
 import MenuComp from './menu.vue'
-const title = import.meta.env.VITE_APP_TITLE
 
+const title = import.meta.env.VITE_APP_TITLE
 </script>
 
 <script lang="ts">
-export default {
-  name: 'AsideComp'
-}
+export default { name: 'AsideComp' }
 </script>
 
 <style scoped lang="scss">

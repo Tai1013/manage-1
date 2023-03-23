@@ -17,7 +17,7 @@ import AsideComp from './aside/index.vue'
 import HeaderComp from './header/index.vue'
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .common-layout {
   height: 100vh;
   background-color: var(--el-bg-color-page);

@@ -1,10 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Rule } from 'async-validator'
 import type { ButtonType, ComponentSize } from 'element-plus'
-export type { PropType, Ref } from 'vue'
-export type { FormInstance, ButtonType, ComponentSize } from 'element-plus'
-export type LabelPosition = 'left' | 'right' | 'top'
 
+export type LabelPosition = 'left' | 'right' | 'top'
 export type ButtonItem = 'submit' | 'cancel'
 export type ButtonField = ButtonItem | ButtonItem[]
 export type ButtonList = {
@@ -12,11 +10,10 @@ export type ButtonList = {
   value: string
   type: ButtonType
 }
-
-export const BUTTON_LIST: ButtonList[] = [
-  { label: '送出', value: 'submit', type: 'primary' },
-  { label: '取消', value: 'cancel', type: '' }
-]
+export type FormFieldScope<T = any> = {
+  field?: FormField
+  value?: T
+}
 
 interface CommonField {
   prop: string
@@ -27,16 +24,15 @@ interface CommonField {
   visible?: boolean
   size?: ComponentSize
   placeholder?: string
-  errorLabel?: string
   onChange?: <T>({ value, field }: { value: T, field: FormField }) => void
 }
 
 interface InputField {
+  type?: 'text' | 'password'
   component?: 'input'
   componentAttr?: {
     showPassword?: boolean
   } & Record<string, any>
-  type?: 'text' | 'password'
 }
 
 interface SelectField {
@@ -51,9 +47,6 @@ interface SelectGroupField {
   options: GlobalApp.OptionGroups
 }
 
-export type FormField = CommonField & (InputField | SelectField | SelectGroupField)
-
-export type FormFieldScope<T = any> = {
-  field?: FormField
-  value?: T
-}
+export type FormField = CommonField & (
+  InputField | SelectField | SelectGroupField
+)

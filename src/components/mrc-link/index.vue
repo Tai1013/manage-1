@@ -1,15 +1,15 @@
 <template lang="pug">
 router-link(
+  v-slot="{ navigate, href }"
   custom
   :to="to"
-  v-slot="{ navigate, href }"
 )
   el-link(
+    v-bind="$attrs"
     :type="type"
     :href="href"
-    @click="navigate"
-    v-bind="$attrs"
     :underline="underline"
+    @click="navigate"
   )
     slot
 </template>
@@ -35,4 +35,8 @@ defineProps({
     default: false
   }
 })
+</script>
+
+<script lang="ts">
+export default { name: 'McrLink' }
 </script>

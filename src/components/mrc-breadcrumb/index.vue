@@ -49,9 +49,7 @@ try {
 </script>
 
 <script lang="ts">
-export default {
-  name: 'Breadcrumb'
-}
+export default { name: 'Breadcrumb' }
 </script>
 
 <style scoped lang="scss">

@@ -27,6 +27,7 @@ const checkSession = (user: User) => {
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    checkSession(user)
     localStorage.setItem('session', JSON.stringify(dayjs(user.metadata.lastSignInTime).add(4, 'hour')))
     setSessionInterval.value = setInterval(() => {
       checkSession(user)

@@ -32,7 +32,5 @@ defineProps({
 </script>
 
 <script lang="ts">
-export default {
-  name: 'MrcButton'
-}
+export default { name: 'MrcButton' }
 </script>

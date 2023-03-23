@@ -35,16 +35,16 @@ el-form(
 </template>
 
 <script setup lang="ts">
-import type { FormField, LabelPosition, ButtonField, ButtonItem, PropType, FormInstance, ComponentSize } from './types'
+import type { FormField, LabelPosition, ButtonItem, ButtonField } from './define'
+import type { ComponentSize, FormInstance } from 'element-plus'
+import type { PropType } from 'vue'
 import { ref, computed } from 'vue'
 import { ElForm, ElFormItem } from 'element-plus'
 import { useMessage } from '@/composables'
+import { useLanguage } from '@/i18n'
 import { normalizeFields } from './normalize'
 import FieldComp from './field.vue'
 import ButtonComp from './button.vue'
-import { useLanguage } from '@/i18n'
-
-const { spaceRequired } = useLanguage()
 
 const props = defineProps({
   form: {
@@ -59,13 +59,13 @@ const props = defineProps({
     type: String as PropType<LabelPosition>,
     default: 'top'
   },
-  disabled: {
-    type: Boolean,
-    default: false
-  },
   size: {
     type: String as PropType<ComponentSize>,
     default: 'default'
+  },
+  disabled: {
+    type: Boolean,
+    default: false
   },
   loading: {
     type: Boolean,
@@ -85,6 +85,7 @@ const emit = defineEmits<{
   (event: ButtonItem): void
 }>()
 
+const { spaceRequired } = useLanguage()
 const { $message } = useMessage()
 
 const innerFields = computed(() => normalizeFields(props.fields))
@@ -104,11 +105,9 @@ const submitForm = () => {
       if (!validateFieldsError) return
       Object.keys(validateFieldsError).forEach(key => {
         const field = props.fields.find(field => field.prop === key)
-        if (!field) return
-        const label = field.errorLabel || field.label
-        if (label) {
-          if (spaceRequired.value) $message.error(label + ' ' + validateFieldsError[key][0].message)
-          else $message.error(label + validateFieldsError[key][0].message)
+        if (field && field.label) {
+          const space = spaceRequired.value ? ' ' : ''
+          $message.error(field.label + space + validateFieldsError[key][0].message)
         }
       })
     }
@@ -128,12 +127,10 @@ const clickHandler = (button: ButtonItem) => {
 </script>
 
 <script lang="ts">
-export default {
-  name: 'MrcForm'
-}
+export default { name: 'MrcForm' }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .el-form-item:last-child {
   margin-bottom: 0;
 }

@@ -27,14 +27,13 @@ el-dropdown(
 </template>
 
 <script setup lang="ts">
-import type { DropOption } from './types'
+import type { DropOption } from './define'
 import type { PropType } from 'vue'
 import type { ComponentSize, TooltipTriggerType } from 'element-plus'
-import { ref } from 'vue'
 import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElAvatar } from 'element-plus'
-import { MrcIcon } from '@/components/basic'
+import { MrcIcon } from '@/components'
 
-const props = defineProps({
+defineProps({
   label: {
     type: String,
     default: undefined
@@ -65,9 +64,7 @@ const commandHandler = (command: string | number) => {
 </script>
 
 <script lang="ts">
-export default {
-  name: 'MrcDropdown'
-}
+export default { name: 'MrcDropdown' }
 </script>
 
 <style scoped lang="scss">

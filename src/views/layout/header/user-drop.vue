@@ -14,11 +14,11 @@ mrc-dropdown.date-drop(
 </template>
 
 <script setup lang="ts">
-import type { DropOption } from '@/components/basic'
+import type { DropOption } from '@/components'
 import { reactive, computed } from 'vue'
 import { ElAvatar } from 'element-plus'
 import { Avatar } from '@element-plus/icons-vue'
-import { MrcDropdown } from '@/components/basic'
+import { MrcDropdown } from '@/components'
 import { currentUser, signOutAuth } from '@/firebase/auth'
 import { $t } from '@/i18n'
 
@@ -55,9 +55,7 @@ const commandHandler = (type: string) => {
 </script>
 
 <script lang="ts">
-export default {
-  name: 'UserDropComp'
-}
+export default { name: 'UserDropComp' }
 </script>
 
 <style scoped lang="scss">

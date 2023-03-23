@@ -8,7 +8,7 @@ mrc-dropdown.date-drop(
 </template>
 
 <script setup lang="ts">
-import { MrcDropdown } from '@/components/basic'
+import { MrcDropdown } from '@/components'
 import { useDateTime } from '@/composables'
 
 const { currentTime, timezoneList, changeTimeZone } = useDateTime()
@@ -18,7 +18,5 @@ const commandHandler = (timezone: string) => {
 </script>
 
 <script lang="ts">
-export default {
-  name: 'DateDropComp'
-}
+export default { name: 'DateDropComp' }
 </script>

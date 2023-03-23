@@ -1,4 +1,4 @@
-import { FormField } from './types'
+import { FormField } from './define'
 import { $t, useLanguage } from '@/i18n'
 
 const { spaceRequired } = useLanguage()

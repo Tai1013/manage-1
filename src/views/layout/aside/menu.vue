@@ -23,13 +23,11 @@ el-menu.menu-comp(
 <script setup lang="ts">
 import { ElMenu, ElMenuItem, ElSubMenu } from 'element-plus'
 import { MENU_LIST } from '@/configs/constant'
-import { MrcIcon } from '@/components/basic';
+import { MrcIcon } from '@/components'
 </script>
 
 <script lang="ts">
-export default {
-  name: "MenuComp"
-}
+export default { name: "MenuComp" }
 </script>
 
 <style scoped lang="scss">
@@ -45,7 +43,7 @@ export default {
 }
 :deep(.el-sub-menu__title), .el-menu-item {
   color: #ffffff;
-  &:hover {
+  &:hover:not(.is-active) {
     background-color: #2b71bb;
   }
 }
