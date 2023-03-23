@@ -12,12 +12,12 @@ type OperateConfig = {
 
 const db = getFirestore(app)
 
-const ipify = ref(localStorage.getItem('ipify'))
+const ipify = ref(sessionStorage.getItem('ipify'))
 
 const getIpify = async () => {
   return axios.get('https://api.ipify.org?format=json')
     .then(res => {
-      localStorage.setItem('ipify', res.data.ip)
+      sessionStorage.setItem('ipify', res.data.ip)
       return res.data.ip
     })
 }
