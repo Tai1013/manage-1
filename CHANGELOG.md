@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/Tai1013/manage/compare/v0.1.3...v0.1.4) (2023-03-24)
+
+
+### Features
+
+* mrc-search ([a15732c](https://github.com/Tai1013/manage/commit/a15732cf5139119b59adf6b9d8621f5dc4cb7bc0))
+
 ### [0.1.3](https://github.com/Tai1013/manage/compare/v0.1.2...v0.1.3) (2023-03-23)
 
 
