@@ -10,14 +10,14 @@ el-menu.menu-comp(
   )
     template(#title)
       mrc-icon(v-if="item.icon" :icon="item.icon")
-      span {{ item.title }}
+      span {{ $t(`page.${item.title}`) }}
 
     template(v-if="item.child.length > 0")
       el-menu-item(
         v-for="child in item.child"
         :key="child.name"
         :index="child.path"
-      ) {{ child.title }}
+      ) {{ $t(`page.${child.title}`) }}
 </template>
 
 <script setup lang="ts">

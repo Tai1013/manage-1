@@ -1,9 +1,8 @@
 <template lang="pug">
 template(v-if="!field.component || field.component === 'input'")
   el-input(
-    v-model="form[field.prop]"
+    v-model="search[field.prop]"
     v-bind="field.componentAttr"
-    :type="field.type"
     :clearable="field.clearable"
     :disabled="field.disabled"
     :size="field.size"
@@ -13,7 +12,7 @@ template(v-if="!field.component || field.component === 'input'")
 
 template(v-else-if="field.component === 'select'")
   el-select(
-    v-model="form[field.prop]"
+    v-model="search[field.prop]"
     v-bind="field.componentAttr"
     :clearable="field.clearable"
     :disabled="field.disabled"
@@ -31,7 +30,7 @@ template(v-else-if="field.component === 'select'")
 
 template(v-else-if="field.component === 'select-group'")
   el-select(
-    v-model="form[field.prop]"
+    v-model="search[field.prop]"
     v-bind="field.componentAttr"
     :clearable="field.clearable"
     :disabled="field.disabled"
@@ -51,25 +50,40 @@ template(v-else-if="field.component === 'select-group'")
         :value="option.value"
         :disabled="option.disabled"
       )
+
+template(v-else-if="field.component === 'date-picker'")
+  el-date-picker.date-picker(
+    v-model="search[field.prop]"
+    v-bind="field.componentAttr"
+    :type="field.type"
+    value-format="YYYY-MM-DD"
+    :placeholder="field.placeholder ? $t(`placeholder.${field.placeholder}`) : $t('placeholder.請選擇')"
+    :start-placeholder="$t('placeholder.開始時間')"
+    :end-placeholder="$t('placeholder.結束時間')"
+    :clearable="field.clearable"
+    :disabled="field.disabled"
+    :size="field.size"
+    @change="(value: any) => onChange(value, field)"
+  )
 </template>
 
 <script setup lang="ts">
-import type { FormField } from './define'
+import type { SearchField } from './define'
 import type { PropType, Ref } from 'vue'
-import { ElInput, ElOption, ElSelect, ElOptionGroup } from 'element-plus'
+import { ElInput, ElOption, ElSelect, ElOptionGroup, ElDatePicker } from 'element-plus'
 
 defineProps({
-  form: {
+  search: {
     type: Object,
     required: true
   },
   field: {
-    type: Object as PropType<FormField>,
+    type: Object as PropType<SearchField>,
     required: true
   }
 })
 
-const onChange = <T>(value: T, field: FormField) => {
+const onChange = <T>(value: T, field: SearchField) => {
   if (field.onChange) return field.onChange({ value, field })
 }
 

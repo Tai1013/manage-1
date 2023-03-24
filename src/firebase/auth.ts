@@ -5,7 +5,7 @@ import { getAuth, signInWithEmailAndPassword, signInAnonymously, onAuthStateChan
 import { errorMessageFormatter } from './formatter'
 import { useMessage } from '@/composables'
 import { operateApi } from './operation'
-import { $t } from '@/i18n'
+import { t } from '@/i18n'
 import dayjs from 'dayjs'
 import router from '@/router';
 
@@ -20,7 +20,7 @@ export const updatedSession = () => localStorage.setItem('session', JSON.stringi
 const checkSession = (user: User) => {
   const lastSignInTime = localStorage.getItem('session')
   if (lastSignInTime && dayjs().isBefore(dayjs(JSON.parse(lastSignInTime))) === false) {
-    $message.error($t('error.權限超時，請重新登入'))
+    $message.error(t('error.權限超時，請重新登入'))
     setTimeout(() => signOutAuth(), 1000)
   }
 }
@@ -51,7 +51,7 @@ export const postSignInAnonymously = async () => {
         account: 'Anonymous',
         apiAction: 'login'
       })
-      $message.success($t('登入成功'))
+      $message.success(t('登入成功'))
       router.push({ name: 'home' })
     })
     .catch((error) => {
@@ -70,7 +70,7 @@ export const postSignInAuth = async (body: {
         account: userCredential.user.displayName ?? '',
         apiAction: 'login'
       })
-      $message.success($t('登入成功'))
+      $message.success(t('登入成功'))
       router.push({ name: 'home' })
     })
     .catch((error) => {

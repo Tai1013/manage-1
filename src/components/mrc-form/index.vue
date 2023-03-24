@@ -9,11 +9,11 @@ el-form(
   @submit.prevent
   @keyup.enter="enterSubmit ? submitForm() : ''"
 )
-  template(v-for="field in innerFields" :key="field.prop")
+  template(v-for="field in fields" :key="field.prop")
     el-form-item(
       v-if="field.visible !== false"
       :prop="field.prop"
-      :label="field.label"
+      :label="field.label ? $t(field.label) : ''"
       :rules="field.rules"
     )
       slot(:name="`field:${field.prop}`" :field="field")
@@ -41,8 +41,7 @@ import type { PropType } from 'vue'
 import { ref, computed } from 'vue'
 import { ElForm, ElFormItem } from 'element-plus'
 import { useMessage } from '@/composables'
-import { useLanguage } from '@/i18n'
-import { normalizeFields } from './normalize'
+import { t, useLanguage } from '@/i18n'
 import FieldComp from './field.vue'
 import ButtonComp from './button.vue'
 
@@ -88,8 +87,6 @@ const emit = defineEmits<{
 const { spaceRequired } = useLanguage()
 const { $message } = useMessage()
 
-const innerFields = computed(() => normalizeFields(props.fields))
-
 const buttonFields = computed(() => {
   if (typeof props.buttons === 'string') return [props.buttons]
   return props.buttons
@@ -107,7 +104,7 @@ const submitForm = () => {
         const field = props.fields.find(field => field.prop === key)
         if (field && field.label) {
           const space = spaceRequired.value ? ' ' : ''
-          $message.error(field.label + space + validateFieldsError[key][0].message)
+          $message.error(t(field.label) + space + validateFieldsError[key][0].message)
         }
       })
     }

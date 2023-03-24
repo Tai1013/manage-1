@@ -20,11 +20,11 @@ import { ElAvatar } from 'element-plus'
 import { Avatar } from '@element-plus/icons-vue'
 import { MrcDropdown } from '@/components'
 import { currentUser, signOutAuth } from '@/firebase/auth'
-import { $t } from '@/i18n'
+import { t } from '@/i18n'
 
 const displayName = computed(() => {
   if (currentUser.value) {
-    if (currentUser.value.isAnonymous) return $t('演示帳號')
+    if (currentUser.value.isAnonymous) return t('演示帳號')
     return currentUser.value.displayName ? currentUser.value.displayName : ''
   }
   return ''
@@ -37,7 +37,7 @@ const userDropList = reactive<DropOption[]>([
     icon: 'UserFilled'
   },
   {
-    label: $t('登出'),
+    label: t('登出'),
     value: 'signOut',
     icon: 'SwitchButton'
   }

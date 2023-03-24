@@ -25,6 +25,7 @@ const { currentFlags, changeLocale } = useLanguage()
 
 const localList = reactive(LOCALE_LIST.map(list => ({
   ...list,
+  label: list.label,
   image: getPathFile(`@/i18n/flags/${list.value}.png`)
 })))
 

@@ -2,7 +2,7 @@ import type { Language } from 'element-plus/es/locale'
 import { i18n } from './install'
 import { ref, computed, watch } from 'vue'
 
-export const $t = i18n.global.t
+export const t = i18n.global.t
 
 const getElementLocale = async (locale: string) => {
   return (await import(`../../node_modules/element-plus/es/locale/lang/${locale}.mjs`)).default

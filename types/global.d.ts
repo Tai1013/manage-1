@@ -11,4 +11,5 @@ namespace GlobalApp {
     options: Options
   }
   type OptionGroups = import('vue').Ref<OptionGroup[]> | OptionGroup[] | Readonly<OptionGroup[]>
+  type FieldStyle = 'field-default' | 'field-time'
 }

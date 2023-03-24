@@ -30,7 +30,7 @@ export const operateApi = async (config: OperateConfig) => {
     OperateTime: getUtcTime(),
     OperateType: config.apiAction,
     Page: router.currentRoute.value.name,
-    Platform: import.meta.env.VITE_APP_TITLE
+    Platform: 'manage'
   }
   const docRef = collection(db, 'Database/Manage/Operate')
   await addDoc(docRef, body)

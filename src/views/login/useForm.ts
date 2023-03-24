@@ -1,9 +1,9 @@
 import type { FormField } from '@/components'
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, watch } from 'vue'
 import { useLoading, useMessage, useVueRouter } from '@/composables'
 import { required, email } from '@/validation'
 import { postSignInAnonymously, postSignInAuth } from '@/firebase/auth'
-import { $t } from '@/i18n'
+import { t } from '@/i18n'
 
 export const useForm = () => {
   const { load, unload, isLoading } = useLoading()
@@ -53,10 +53,10 @@ export const useForm = () => {
       else localStorage.removeItem(route.origin)
       await postSignInAuth(form)
     } else {
-      const confirm = await $messageBox.confirm($t('演示站僅供查看'), $t('提示'), {
+      const confirm = await $messageBox.confirm(t('演示站僅供查看'), t('提示'), {
         type: 'warning',
-        confirmButtonText: $t('確認'),
-        cancelButtonText: $t('取消')
+        confirmButtonText: t('確認'),
+        cancelButtonText: t('取消')
       })
         .then(() => true)
         .catch(() => false)
@@ -65,6 +65,17 @@ export const useForm = () => {
     }
     unload()
   }
+
+  watch(() => isFormal.value, () => {
+    if (isFormal.value && rememberAccount) {
+      form.email = rememberAccount
+      form.password = ''
+      form.remember = rememberAccount ? true : false
+    } else {
+      form.email = ''
+      form.password = ''
+    }
+  })
 
   return {
     isFormal,

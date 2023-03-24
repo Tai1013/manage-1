@@ -7,23 +7,44 @@
   "登入成功": "Login successful",
   "提示": "Prompt",
   "演示站僅供查看": "Demo site is for viewing only",
-  "演示無需輸入": "Demo not input",
   "按鈕": "Button",
   "確認": "Confirm",
   "取消": "Cancel",
   "送出": "Submit",
-  "請輸入": "Please enter",
-  "請選擇": "Please select",
+  "搜尋": "Search",
+  "清除": "Clear",
   "電子信箱": "Email",
   "密碼": "Password",
   "下拉菜單": "Dropdown List",
   "錯誤": "Error",
   "演示帳號": "Demo account",
   "登出": "Sign Out",
+  "站台": "Platform",
+  "帳號": "Account",
+  "頁面": "Page",
+  "操作類型": "Operate Type",
+  "操作時間": "Operate Time",
+
+  "locale": {
+    "繁體中文": "Traditional Chinese",
+    "英語": "English"
+  },
+
+  "page": {
+    "操作記錄": "Operate Record"
+  },
 
   "timezone": {
     "台北時間": "Taipei",
     "紐約時間": "New York"
+  },
+
+  "placeholder": {
+    "演示無需輸入": "Demo not input",
+    "請輸入": "Please enter",
+    "請選擇": "Please select",  
+    "開始時間": "Start Time",
+    "結束時間": "End Time"
   },
 
   "validate": {

@@ -6,9 +6,9 @@
       :key="item.name"
     )
       el-breadcrumb-item(v-if="index === 0 || index === breadcrumb.length - 1")
-        b(v-if="route.name === item.name") {{ item.title }}
-        span(v-else) {{ item.title }}
-      el-breadcrumb-item(v-else :to="{ name: item.name }") {{ item.title }}
+        b(v-if="route.name === item.name") {{ $t(`page.${item.title}`) }}
+        span(v-else) {{ $t(`page.${item.title}`) }}
+      el-breadcrumb-item(v-else :to="{ name: item.name }") {{ $t(`page.${item.title}`) }}
   el-divider
 </template>
 

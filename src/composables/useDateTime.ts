@@ -3,6 +3,7 @@ import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import { ref, onMounted, onUnmounted } from 'vue'
 import { TIMEZONE_LIST } from '@/configs/constant'
+import { useI18n } from 'vue-i18n'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -15,13 +16,15 @@ const getDateTime = (tz: string) => {
 export const getUtcTime = () => dayjs.utc().format()
 
 export const useDateTime = () => {
+  const { t } = useI18n()
+
   const currentTZ = ref(dayjs.tz.guess())
   const currentTime = ref(getDateTime(currentTZ.value))
   const timezoneList = ref<GlobalApp.Option[]>([])
 
   timezoneList.value = TIMEZONE_LIST.map(zone => ({
     value: zone.value,
-    label: zone.label + dayjs().tz(zone.value).format(' (ZZ)')
+    label: t(`timezone.${zone.label}`) + dayjs().tz(zone.value).format(' (ZZ)')
   }))
 
   const changeTimeZone = (tz: string) => {
