@@ -1,1 +1,0 @@
-import{bs as n,bt as r}from"./index-b7b5f856.js";const e=()=>{const o=n(),t={...r(),host:window.location.host,hostname:window.location.hostname,href:window.location.href,origin:window.location.origin,port:window.location.port,protocol:window.location.protocol};return{router:o,route:t}};export{e as u};
