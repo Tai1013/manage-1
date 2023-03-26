@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/Tai1013/manage/compare/v0.1.4...v0.1.5) (2023-03-26)
+
+
+### Features
+
+* mrc-table and operate-record ([93a41f1](https://github.com/Tai1013/manage/commit/93a41f1cde00cf5d524caf79f9b787c57632ebb6))
+
 ### [0.1.4](https://github.com/Tai1013/manage/compare/v0.1.3...v0.1.4) (2023-03-24)
 
 
