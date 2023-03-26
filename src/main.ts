@@ -1,7 +1,8 @@
 import 'normalize.css'
 import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
-import './assets/main.scss'
+import './assets/scss/main.scss'
+import './helper/prototype'
 
 import { createApp } from 'vue'
 import App from './App.vue'

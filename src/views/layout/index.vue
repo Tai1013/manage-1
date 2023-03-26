@@ -19,7 +19,8 @@ import HeaderComp from './header/index.vue'
 
 <style scoped lang="scss">
 .common-layout {
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   background-color: var(--el-bg-color-page);
   .el-aside {
     color: #ffffff;
@@ -31,10 +32,12 @@ import HeaderComp from './header/index.vue'
   }
   .el-container {
     height: 100%;
+    min-height: 100vh;
   }
   .main-view {
     width: 100%;
     height: 100%;
+    min-height: calc(100vh - 120px);
     padding: var(--el-main-padding);
     background-color: var(--el-menu-bg-color);
     box-sizing: border-box;

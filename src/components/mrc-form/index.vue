@@ -51,7 +51,7 @@ const props = defineProps({
     required: true
   },
   fields: {
-    type: Object as PropType<FormField[]>,
+    type: Array as PropType<FormField[]>,
     required: true
   },
   labelPosition: {

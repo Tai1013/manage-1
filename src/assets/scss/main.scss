@@ -1,0 +1,32 @@
+.field-default {
+  display: inline-flex;
+  width: 200px;
+  > div {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+
+.field-time {
+  display: inline-flex;
+  width: 414px;
+  > div {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+
+.el-table {
+  margin-top: 20px;
+  .el-table__header-wrapper thead .is-leaf {
+    padding: 16px 0;
+    color: #000000;
+    font-weight: normal;
+    background-color: #f3f3f3;
+  }
+  td.el-table__cell div {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    white-space: nowrap;
+  }
+}

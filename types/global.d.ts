@@ -5,11 +5,15 @@ namespace GlobalApp {
     disabled?: boolean
   }
   type Options = import('vue').Ref<Option[]> | Option[] | Readonly<Option[]>
-
   type OptionGroup = {
     label: string
     options: Options
   }
   type OptionGroups = import('vue').Ref<OptionGroup[]> | OptionGroup[] | Readonly<OptionGroup[]>
   type FieldStyle = 'field-default' | 'field-time'
+  type Pagination = {
+    page: number
+    count: number
+    total: number
+  }
 }

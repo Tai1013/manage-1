@@ -55,7 +55,7 @@ const props = defineProps({
     required: true
   },
   fields: {
-    type: Object as PropType<SearchField[]>,
+    type: Array as PropType<SearchField[]>,
     required: true
   },
   size: {
@@ -113,6 +113,10 @@ export default { name: 'MrcSearch' }
 </script>
 
 <style scoped lang="scss">
+.el-form--inline .el-form-item {
+  margin-bottom: 14px;
+  margin-right: 14px;
+}
 .label-required {
   margin-left: 5px;
   font-size: 12px;

@@ -11,4 +11,7 @@ const { elementLocale } = useLanguage()
 </script>
 
 <style lang="scss">
+body {
+  min-width: 960px;
+}
 </style>

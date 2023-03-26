@@ -53,6 +53,9 @@ export default { name: 'Breadcrumb' }
 </script>
 
 <style scoped lang="scss">
+.breadcrumb {
+  margin-bottom: 20px;
+}
 .el-breadcrumb {
   font-size: 16px;
 }

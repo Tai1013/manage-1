@@ -3,17 +3,24 @@ mrc-breadcrumb
 mrc-search(
   :search="search"
   :fields="fields"
+  @submit="submitHandler()"
+  @clear="clearHandler()"
+)
+table-comp(
+  :search="search"
 )
 </template>
 
 <script setup lang="ts">
+import type { SearchData } from './define'
 import type { SearchField } from '@/components'
 import { reactive, computed } from 'vue'
-import { MrcBreadcrumb } from '@/components'
-import { MrcSearch } from '@/components'
+import { MrcBreadcrumb, MrcSearch } from '@/components'
 import { PLATFORM_LIST, MENU_LIST, OPERATE_TYPE_LIST } from '@/configs/constant'
+import { useProvideRegister } from '@/composables'
+import TableComp from './table.vue'
 
-const search = reactive({
+const search = reactive<SearchData>({
   platform: '',
   account: '',
   page: '',
@@ -62,6 +69,9 @@ const fields = computed(():SearchField[] => [
     clearable: true
   }
 ])
+
+const submitHandler = useProvideRegister('submit')
+const clearHandler = useProvideRegister('clear')
 </script>
 
 <style lang="scss">
