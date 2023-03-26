@@ -8,7 +8,7 @@ dev:
 build:
 	pnpm run build
 	git add .
-	git commit -m 'build: github page' 
+	git commit -m 'build: github page' --no-verify
 
 husky-init:
 	pnpm run prepare
