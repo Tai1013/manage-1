@@ -34,7 +34,7 @@ interface SelectField {
 interface SelectGroupField {
   component: 'select-group'
   componentAttr?: Record<string, any>
-  options: GlobalApp.Options
+  options: GlobalApp.OptionGroups
 }
 
 interface DatePickerField {

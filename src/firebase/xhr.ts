@@ -82,6 +82,7 @@ export const firestoreXhr = async (config: FirestoreConfig) => {
       let queryDocs: Query<DocumentData> | undefined = undefined
       const resultDocs: any[] = []
 
+      if (!config.data && !config.query) queryDocs = docRef
       if (config.data && !config.query) queryDocs = config.data
       if (!config.data && config.query) queryDocs = query(docRef, ...config.query)
       if (!queryDocs) return Promise.reject('API參數錯誤')

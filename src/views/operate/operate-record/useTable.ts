@@ -66,7 +66,7 @@ export const useTable = (search: SearchData) => {
     load()
     await getOperateRecord(search)
       .then(result => data.value = result.data)
-    unload()
+      .finally(() => unload())
   }
 
   return {

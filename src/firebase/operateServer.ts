@@ -2,7 +2,7 @@ import { checkRequiredParams, firestoreXhr } from './xhr'
 import { where } from "firebase/firestore";
 import { errorMessageFormatter } from './formatter'
 import { useMessage } from '@/composables'
-import { isDayComparison } from '@/composables/useDateTime'
+import { isDayComparison, getUtcTime } from '@/composables/useDateTime'
 
 const { $message } = useMessage()
 
@@ -21,7 +21,7 @@ export const getOperateRecord = (body: object) => {
     const params = checkRequiredParams(body)
 
     const whereQuery = Object.keys(params).map(key => {
-      if (key === 'operateTime') return (where(key, ">=", params[key][0]), where(key, "<=", params[key][1]))
+      if (key === 'operateTime') return (where(key, ">=", getUtcTime(params[key][0])), where(key, "<=", getUtcTime(params[key][1])))
       return where(key, "==", params[key])
     })
 

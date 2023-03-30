@@ -12,14 +12,28 @@ dayjs.extend(timezone)
 
 const timeInterval = ref()
 
-export const getDateTime = ({ date, timezoon, format = 'YYYY-MM-DD HH:mm:ss' }: { date?: DateType, timezoon?: string, format?: string }) => {
+export const getDateTime = ({ date, timezoon, format = 'YYYY-MM-DD HH:mm:ss' }: { date?: DateType, timezoon?: string, format?: string } = {}) => {
   return dayjs(date).tz(timezoon).format(format)
 }
 
-export const getUtcTime = () => dayjs.utc().format()
+export const getUtcTime = (date?:DateType) => dayjs(date).utc().format()
 
 export const setDayAdd = ({ value, unit, date }: { value: number, unit?: dayjs.ManipulateType | undefined, date?:DateType }): dayjs.Dayjs => {
   return dayjs(date).add(value, unit)
+}
+
+export const setManipulate = ({ value, unit, date }: { value: number, unit?: dayjs.ManipulateType | undefined, date?:DateType }) => {
+  const add = (): dayjs.Dayjs => {
+    return dayjs(date).add(value, unit)
+  }
+  const subtract = (): dayjs.Dayjs => {
+    return dayjs(date).subtract(value, unit)
+  }
+
+  return {
+    add,
+    subtract
+  }
 }
 
 export const isDayComparison = ({ a, b, sort = 'ascending' }: { a?: DateType, b?:DateType, sort?: 'ascending' | 'descending' }) => {

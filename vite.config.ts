@@ -31,7 +31,16 @@ export default defineConfig({
     assetsInlineLimit: 4096,
     rollupOptions: {
       output: {
-        // https://github.com/rollup/rollup/blob/master/src/utils/sanitizeFileName.ts
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            // return id.toString().split('node_modules/.pnpm/')[1].split('/')[0].toString()
+            const modules = id.toString().split('node_modules/.pnpm/')[1].split('/')[0].toString()
+            if (modules.indexOf('firebase') > -1) return 'firebase'
+            if (modules.indexOf('element-plus') > -1) return 'element-plus-' + modules.indexOf('element-plus')
+            if (modules.indexOf('chart.js') > -1) return 'chartjs'
+            return 'vendor'
+          }
+        },
         sanitizeFileName(name) {
           const match = DRIVE_LETTER_REGEX.exec(name);
           const driveLetter = match ? match[0] : '';
