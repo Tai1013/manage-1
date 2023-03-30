@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Query, DocumentData, QueryFieldFilterConstraint } from "firebase/firestore";
+import type { ApiAction } from '@/configs/constant'
 import { app } from '@/firebase'
 import { getFirestore, doc, collection, getDocs, addDoc, updateDoc, deleteDoc, query, where, limit, orderBy } from "firebase/firestore";
 import { ref } from 'vue'
@@ -42,7 +43,7 @@ const getIpify = async () => {
 }
 
 type OperateConfig = {
-  apiAction: string
+  apiAction: ApiAction
   detail?: string
 }
 
@@ -70,7 +71,7 @@ type FirestoreConfig = {
   url: string
   data?: Query<DocumentData>
   query?: QueryFieldFilterConstraint[]
-  apiAction?: string
+  apiAction?: ApiAction
   detail?: string
 }
 

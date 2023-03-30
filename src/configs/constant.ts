@@ -12,26 +12,22 @@ export const MENU_LIST = [
   {
     title: '操作記錄', name: 'operate', icon: 'Operation',
     child: [
-      { title: '操作記錄', name: 'operate-record', path: '/operate/operate-record' }
+      { title: '操作記錄', name: 'operate-record', path: '/operate/operate-record', operate: false }
     ]
   }
 ] as const
 
 export const ACTION_LIST = [
-  { value: 'read', label: '查看' },
-  { value: 'create', label: '新增' },
-  { value: 'detail', label: '詳情' },
-  { value: 'update', label: '編輯' },
-  { value: 'delete', label: '刪除' }
+  { value: 'login', label: '登入', operate: true },
+  { value: 'read', label: '查看', operate: false },
+  { value: 'create', label: '新增', operate: false },
+  { value: 'detail', label: '詳情', operate: false },
+  { value: 'update', label: '編輯', operate: false },
+  { value: 'delete', label: '刪除', operate: false }
 ] as const
+const action = ACTION_LIST.map(list => list.value)
+export type ApiAction = typeof action[number]
 
 export const PLATFORM_LIST = [
   { value: 'manage', label: '管理後台' }
-] as const
-
-export const OPERATE_TYPE_LIST = [
-  { value: 'login', label: '登入' },
-  { value: 'create', label: '新增' },
-  { value: 'update', label: '編輯' },
-  { value: 'delete', label: '刪除' }
 ] as const

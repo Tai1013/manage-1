@@ -2,7 +2,7 @@
 import type { VNode, RendererNode, RendererElement } from 'vue'
 import type { TableColumnCtx } from 'element-plus'
 import { getDateTime } from '@/composables/useDateTime'
-import { OPERATE_TYPE_LIST, PLATFORM_LIST } from './constant'
+import { ACTION_LIST, PLATFORM_LIST } from './constant'
 
 export type Formatter = (row: any, column: TableColumnCtx<any>, cellValue: any, index: number) => string | VNode<RendererNode, RendererElement, Record<string, any>>
 
@@ -11,7 +11,7 @@ export const timeFormatter: Formatter = (row, column, cellValue, index) => {
 }
 
 export const operateFormatter: Formatter = (row, column, cellValue, index) => {
-  const findOperate = OPERATE_TYPE_LIST.find(list => list.value === cellValue)
+  const findOperate = ACTION_LIST.find(list => list.value === cellValue)
   return findOperate ? findOperate.label : '錯誤'
 }
 

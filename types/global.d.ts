@@ -6,7 +6,7 @@ namespace GlobalApp {
   }
   type Options = import('vue').Ref<Option[]> | Option[] | Readonly<Option[]>
   type OptionGroup = {
-    label: string
+    label?: string
     options: Options
   }
   type OptionGroups = import('vue').Ref<OptionGroup[]> | OptionGroup[] | Readonly<OptionGroup[]>

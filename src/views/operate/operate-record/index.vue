@@ -16,9 +16,12 @@ import type { SearchData } from './define'
 import type { SearchField } from '@/components'
 import { reactive, computed } from 'vue'
 import { MrcBreadcrumb, MrcSearch } from '@/components'
-import { PLATFORM_LIST, MENU_LIST, OPERATE_TYPE_LIST } from '@/configs/constant'
+import { useList } from './useList'
+import { PLATFORM_LIST } from '@/configs/constant'
 import { useProvideRegister } from '@/composables'
 import TableComp from './table.vue'
+
+const { pageList, operateTypeList } = useList()
 
 const search = reactive<SearchData>({
   platform: '',
@@ -44,21 +47,15 @@ const fields = computed(():SearchField[] => [
   {
     prop: 'page',
     label: '頁面',
-    component: 'select-group',
-    options: MENU_LIST.map(menu => ({
-      label: menu.title,
-      options: menu.child.map(child => ({
-        label: child.title,
-        value: child.name
-      }))
-    })),
+    component: 'select',
+    options: pageList,
     clearable: true
   },
   {
     prop: 'operateType',
     label: '操作類型',
     component: 'select',
-    options: OPERATE_TYPE_LIST,
+    options: operateTypeList,
     clearable: true
   },
   {

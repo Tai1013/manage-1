@@ -24,7 +24,7 @@ el-table(
 <script setup lang="ts">
 import type { TableColumns } from './define'
 import type { PropType } from 'vue'
-import { ref, onMounted, watch } from 'vue'
+import { ref, watch, nextTick } from 'vue'
 import { ElTable, ElTableColumn } from 'element-plus'
 
 const props = defineProps({
@@ -84,12 +84,10 @@ watch(() => props.data, () => {
   tableMaxHeight.value = undefined
   tableElements.value = 0
   setTableElement()
-})
-
-onMounted(() => {
-  setTableElement()
-})
-
+  nextTick(() => {
+    if (tableMaxHeight.value && tableMaxHeight.value <= 360) tableMaxHeight.value = 360
+  })
+}, { immediate: true })
 </script>
 
 <script lang="ts">

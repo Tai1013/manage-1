@@ -4,9 +4,11 @@ import { ref, computed } from 'vue'
 import { useLoading } from '@/composables'
 import { getOperateRecord } from '@/firebase/operateServer'
 import { platformFormatter, timeFormatter, operateFormatter } from '@/configs/formatter'
+import { useList } from './useList'
 
 export const useTable = (search: SearchData) => {
   const { load, unload, isLoading } = useLoading()
+  const { pageListFormatter } = useList()
 
   const data = ref<OperateRecord[]>([])
   const columns = computed((): TableColumns[] => [
@@ -17,12 +19,19 @@ export const useTable = (search: SearchData) => {
     },
     {
       prop: 'page',
-      label: '頁面'
+      label: '頁面',
+      formatter: pageListFormatter,
+      attrs: {
+        align: 'center'
+      }
     },
     {
       prop: 'operateType',
       label: '操作類型',
-      formatter: operateFormatter
+      formatter: operateFormatter,
+      attrs: {
+        align: 'center'
+      }
     },
     {
       prop: 'operateTime',
@@ -47,13 +56,6 @@ export const useTable = (search: SearchData) => {
         minWidth: 130
       }
     }
-    // {
-    //   prop: 'detail',
-    //   label: '',
-    //   attrs: {
-    //     fixed: 'right'
-    //   }
-    // }
   ])
 
   const reset = () => {
