@@ -1,6 +1,6 @@
 <template lang="pug">
 el-row(:gutter="12")
-  el-col(:span="8")
+  el-col(:span="8" :lg="6")
     .grid-content
       .grid-header
         .title 帳號登入次數
