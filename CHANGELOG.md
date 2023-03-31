@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/Tai1013/manage/compare/v0.1.6...v0.1.7) (2023-03-31)
+
+
+### Bug Fixes
+
+* home el-row lg style ([8c16ec1](https://github.com/Tai1013/manage/commit/8c16ec198148675893df7d2c83c496f3cc4f2b17))
+
 ### [0.1.6](https://github.com/Tai1013/manage/compare/v0.1.5...v0.1.6) (2023-03-31)
 
 
