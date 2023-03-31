@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/Tai1013/manage/compare/v0.1.5...v0.1.6) (2023-03-31)
+
+
+### Features
+
+* home add operate chart ([a99bccc](https://github.com/Tai1013/manage/commit/a99bccc72edd624202ceb691e96b5e6b679eaca0))
+* operate-record-formatter ([62ca818](https://github.com/Tai1013/manage/commit/62ca818c512fec1c52fda01be4a2b89518bc3f13))
+
 ### [0.1.5](https://github.com/Tai1013/manage/compare/v0.1.4...v0.1.5) (2023-03-26)
 
 
