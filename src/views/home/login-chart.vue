@@ -1,25 +1,19 @@
 <template lang="pug">
 doughnut(
   :data="data"
+  :loading="isLoading"
 )
 </template>
 
 <script setup lang="ts">
+import type { OperateRecord } from '@/firebase/operateServer'
 import { ref, computed, onMounted } from 'vue'
 import { Doughnut } from '@/components/chartjs'
 import { getOperateRecord } from '@/firebase/operateServer'
-import { setManipulate, getDateTime } from '@/composables/useDateTime'
+import { useDateTime, useLoading } from '@/composables'
 
-type OperateRecord = {
-  id: string
-  ip: string
-  detail: string
-  platform: string
-  account: string
-  page: string
-  operateType: string
-  operateTime: string[]
-}
+const { getDateTimeRange } = useDateTime()
+const { isLoading, load, unload } = useLoading()
 
 const anonymousSum = computed(() => operateData.value.filter(data => data.account === '演示帳號').length)
 const formalSum = computed(() => operateData.value.length - anonymousSum.value)
@@ -37,10 +31,12 @@ const data = computed(() => ({
 }))
 
 onMounted(async () => {
-  console.log(getDateTime())
-    getOperateRecord({
-      operateType: 'login'
-    })
+  load()
+  getOperateRecord({
+    operateType: 'login',
+    operateTime: getDateTimeRange(3, 'month')
+  })
     .then(result => operateData.value = result.data)
+    .finally(() => unload())
 })
 </script>

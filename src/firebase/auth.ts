@@ -3,10 +3,11 @@ import { ref, computed } from 'vue'
 import { app } from '@/firebase'
 import { getAuth, signInWithEmailAndPassword, signInAnonymously, onAuthStateChanged, signOut } from "firebase/auth";
 import { errorMessageFormatter } from './formatter'
-import { useMessage, isDayComparison, setDayAdd } from '@/composables'
+import { useMessage } from '@/composables'
 import { operateApi } from './xhr'
 import { t } from '@/i18n'
 import router from '@/router';
+import dayjs from 'dayjs';
 
 const auth = getAuth(app)
 const { $message } = useMessage()
@@ -14,11 +15,11 @@ const { $message } = useMessage()
 export const currentUser = computed(() => auth.currentUser)
 const setSessionInterval = ref()
 
-export const updatedSession = () => localStorage.setItem('session', JSON.stringify(setDayAdd({ value: 4, unit: 'hour' })))
+export const updatedSession = () => localStorage.setItem('session', JSON.stringify(dayjs().add(4, 'hour')))
 
 const checkSession = (user: User) => {
   const lastSignInTime = localStorage.getItem('session')
-  if (lastSignInTime && isDayComparison({ b: JSON.parse(lastSignInTime) }) >= 0) {
+  if (lastSignInTime && dayjs().isAfter(JSON.parse(lastSignInTime))) {
     $message.error(t('error.登入逾時，請重新登入'))
     setTimeout(() => signOutAuth(), 1000)
   }
@@ -27,7 +28,7 @@ const checkSession = (user: User) => {
 onAuthStateChanged(auth, (user) => {
   if (user) {
     checkSession(user)
-    localStorage.setItem('session', JSON.stringify(setDayAdd({ value: 4, unit: 'hour', date: user.metadata.lastSignInTime })))
+    localStorage.setItem('session', JSON.stringify(dayjs(user.metadata.lastSignInTime).add(4, 'hour')))
     setSessionInterval.value = setInterval(() => {
       checkSession(user)
     }, 30 * 1000)

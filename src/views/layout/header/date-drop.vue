@@ -1,6 +1,6 @@
 <template lang="pug">
 mrc-dropdown.date-drop(
-  :label="currentTime"
+  :label="dateTime"
   :options="timezoneList"
   size="small"
   @command="commandHandler"
@@ -11,7 +11,9 @@ mrc-dropdown.date-drop(
 import { MrcDropdown } from '@/components'
 import { useDateTime } from '@/composables'
 
-const { currentTime, timezoneList, changeTimeZone } = useDateTime()
+const { currentDateTime, timezoneList, changeTimeZone } = useDateTime()
+const { dateTime } = currentDateTime()
+
 const commandHandler = (timezone: string) => {
   changeTimeZone(timezone)
 }

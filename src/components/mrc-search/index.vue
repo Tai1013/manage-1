@@ -41,9 +41,9 @@ import { ref, computed } from 'vue'
 import { normalizeFields } from './normalize'
 import { ElForm, ElFormItem } from 'element-plus'
 import { MrcButton } from '@/components'
-import FieldComp from './field.vue'
 import { useMessage } from '@/composables'
 import { t } from '@/i18n'
+import FieldComp from './field.vue'
 
 type RuleRequired = {
   required: boolean

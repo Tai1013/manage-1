@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Rule } from 'async-validator'
-import type { ComponentSize, DatePickType, DateOrDates } from 'element-plus'
+import type { ComponentSize, DatePickType } from 'element-plus'
 
 export type SearchFieldScope<T = any> = {
   field?: SearchField

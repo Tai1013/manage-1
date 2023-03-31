@@ -10,6 +10,8 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   const notPath: boolean = to.matched.length === 0
   const hasLogin = await getAuthState()
+
+  if (notPath) return next({ name: 'login' })
   if (to.name === 'login' && !!hasLogin) return next({ name: 'home' })
   if (to.meta.requiresAuth && !hasLogin) return next({ name: 'login' })
   next()

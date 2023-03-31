@@ -1,12 +1,12 @@
 import type { TableColumns } from '@/components'
-import type { SearchData, OperateRecord } from './define'
+import type { OperateRecord, OperateSearch } from '@/firebase/operateServer'
 import { ref, computed } from 'vue'
 import { useLoading } from '@/composables'
 import { getOperateRecord } from '@/firebase/operateServer'
 import { platformFormatter, timeFormatter, operateFormatter } from '@/configs/formatter'
 import { useList } from './useList'
 
-export const useTable = (search: SearchData) => {
+export const useTable = (search: OperateSearch) => {
   const { load, unload, isLoading } = useLoading()
   const { pageListFormatter } = useList()
 

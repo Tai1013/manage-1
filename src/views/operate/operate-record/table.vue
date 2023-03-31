@@ -7,7 +7,7 @@ mrc-table(
 </template>
 
 <script setup lang="ts">
-import type { SearchData } from './define'
+import type { OperateSearch } from '@/firebase/operateServer'
 import type { PropType } from 'vue'
 import { MrcTable } from '@/components'
 import { useInjectRegister } from '@/composables'
@@ -15,7 +15,7 @@ import { useTable } from './useTable'
 
 const props = defineProps({
   search: {
-    type: Object as PropType<SearchData>,
+    type: Object as PropType<OperateSearch>,
     required: true
   }
 })

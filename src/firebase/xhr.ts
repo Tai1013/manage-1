@@ -4,12 +4,14 @@ import type { ApiAction } from '@/configs/constant'
 import { app } from '@/firebase'
 import { getFirestore, doc, collection, getDocs, addDoc, updateDoc, deleteDoc, query, where, limit, orderBy } from "firebase/firestore";
 import { ref } from 'vue'
-import { getUtcTime } from '@/composables/useDateTime'
+import { useDateTime } from '@/composables'
 import { currentUser, updatedSession } from './auth'
 import axios from 'axios'
 import router from '@/router'
 
 export const db = getFirestore(app)
+const { getUtcTime } = useDateTime()
+
 const ipify = ref(sessionStorage.getItem('ipify'))
 
 export const checkRequiredParams = (data: Record<string, any>, requiredKey: string[] = []) => {
@@ -17,12 +19,14 @@ export const checkRequiredParams = (data: Record<string, any>, requiredKey: stri
   try {
     Object.keys(data).forEach(key => {
       if (!requiredKey.includes(key)) {
+        if ([undefined, null, ''].includes(data[key])) return
         if (typeof data[key] === 'object' && Object.keys(data[key]).length > 0) params[key] = data[key]
-        else if (typeof data[key] !== 'object' && ![undefined, null, ''].includes(data[key])) params[key] = data[key]
+        else if (typeof data[key] !== 'object') params[key] = data[key]
       } else {
         if (typeof data[key] === 'object' && Object.keys(data[key]).length > 0) params[key] = data[key]
-        else if (typeof data[key] !== 'object' && ![undefined, null, ''].includes(data[key])) params[key] = data[key]
+        else if (typeof data[key] !== 'object') params[key] = data[key]
         else {
+          // eslint-disable-next-line no-console
           console.error(key + ':api key required')
           throw Error()
         }
@@ -103,6 +107,5 @@ export const firestoreXhr = async (config: FirestoreConfig) => {
           return Promise.resolve(resultDocs)
         })
         .catch(error => Promise.reject(error))
-      break;
   }
 }

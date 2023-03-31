@@ -12,7 +12,7 @@ table-comp(
 </template>
 
 <script setup lang="ts">
-import type { SearchData } from './define'
+import type { OperateSearch } from '@/firebase/operateServer'
 import type { SearchField } from '@/components'
 import { reactive, computed } from 'vue'
 import { MrcBreadcrumb, MrcSearch } from '@/components'
@@ -23,7 +23,7 @@ import TableComp from './table.vue'
 
 const { pageList, operateTypeList } = useList()
 
-const search = reactive<SearchData>({
+const search = reactive<OperateSearch>({
   platform: '',
   account: '',
   page: '',
@@ -70,6 +70,3 @@ const fields = computed(():SearchField[] => [
 const submitHandler = useProvideRegister('submit')
 const clearHandler = useProvideRegister('clear')
 </script>
-
-<style lang="scss">
-</style>

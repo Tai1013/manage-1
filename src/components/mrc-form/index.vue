@@ -84,7 +84,7 @@ const emit = defineEmits<{
   (event: ButtonItem): void
 }>()
 
-const { spaceRequired } = useLanguage()
+const { isSpaceRequired } = useLanguage()
 const { $message } = useMessage()
 
 const buttonFields = computed(() => {
@@ -103,7 +103,7 @@ const submitForm = () => {
       Object.keys(validateFieldsError).forEach(key => {
         const field = props.fields.find(field => field.prop === key)
         if (field && field.label) {
-          const space = spaceRequired.value ? ' ' : ''
+          const space = isSpaceRequired.value ? ' ' : ''
           $message.error(t(field.label) + space + validateFieldsError[key][0].message)
         }
       })
